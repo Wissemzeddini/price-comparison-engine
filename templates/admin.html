@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Dashboard</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2 zone">
+				<div class="logo">
+					Admin Dashbord
+				</div>
+				<input type="text" name="search" placeholder="Search" class="search">
+				<div class="ligne"></div>
+				<ul class="menu">
+					<li class="list">
+						<i class="fas fa-home"></i>
+						Dashbord
+					</li>
+					<li class="list">
+						<i class="fas fa-users-cog"></i>
+						Users config
+					</li>
+					<li class="list">
+						<i class="fas fa-align-justify"></i>
+						products
+					</li>
+					<li class="list">
+						<i class="fas fa-store"></i>
+						<a href="/stat">Stors</a>
+					</li>
+					<li class="list">
+						<i class="fas fa-inbox"></i>
+						Contacts
+					</li>
+					<li class="list">
+						<i class="fas fa-cog"></i>
+						Settings
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-10">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="cadre">
+								<a href="/scraping"><p>Scraping</p>
+								<i class="fas fa-box-open icon"></i></a>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="cadre">
+								<a href="/matching">
+								<p>Matching</p>
+								<i class="fas fa-cogs icon"></i>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="cadre">
+								<a href="/model">
+								<p>Modeling</p>
+								<i class="fas fa-cubes icon"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="container">
+  								<!-- DONUT CHART BLOCK (LEFT-CONTAINER) --> 
+  								<div class="donut-chart-block block"> 
+                    			<h2 class="titular">Top category</h2>
+                    			<div class="donut-chart">
+
+      								<div id="porcion1" class="recorte"><div class="quesito ios" data-rel="{{ catg[0]['pd_count']}}"></div></div>
+     								<div id="porcion2" class="recorte"><div class="quesito mac" data-rel="{{ catg[1]['pd_count']}}"></div></div>
+    								 <div id="porcion3" class="recorte"><div class="quesito win" data-rel="{{ catg[2]['pd_count']}}"></div></div>
+    								 <div id="porcionFin" class="recorte"><div class="quesito linux" data-rel="{{ catg[3]['pd_count']}}"></div></div>
+ 									<!-- FIN AÑADIDO GRÄFICO -->
+                           			 <p class="center-date">JUNE<br><span class="scnd-font-color">2021</span></p>        
+                    			</div>
+                    			<ul class="os-percentages horizontal-list">
+			                        <li>
+			                            <p class="ios os scnd-font-color" style="font-size: 9px;">{{ catg[0]['catg_id']}}</p>
+			                            <p class="os-percentage">{{ catg[0]['pd_count']}}<sup>%</sup></p>
+			                        </li>
+			                        <li>
+			                            <p class="mac os scnd-font-color" style="font-size: 9px;">{{ catg[1]['catg_id']}}</p>
+			                            <p class="os-percentage">{{ catg[1]['pd_count']}}<sup>%</sup></p>
+			                        </li>
+			                        <li>
+			                            <p class="linux os scnd-font-color" style="font-size: 9px;">{{ catg[2]['catg_id']}}</p>
+			                            <p class="os-percentage">{{ catg[2]['pd_count']}}<sup>%</sup></p>
+			                        </li>
+			                        <li>
+			                            <p class="win os scnd-font-color" style="font-size: 9px;">{{ catg[3]['catg_id']}}</p>
+			                            <p class="os-percentage">{{ catg[3]['pd_count']}}<sup>%</sup></p>
+			                        </li>
+			                    </ul>
+               					</div>
+ 								<!-- LINE CHART BLOCK (LEFT-CONTAINER) -->
+               					 <div class="line-chart-block block">
+								     <div class="line-chart">
+								       <div class='grafico'>
+								       <ul class='eje-y'>
+								         <li data-ejeY='30'></li>
+								         <li data-ejeY='20'></li>
+								         <li data-ejeY='10'></li>
+								         <li data-ejeY='0'></li>
+								       </ul>
+								       <ul class='eje-x'>
+								         <li>Apr</li>
+								         <li>May</li>
+								         <li>Jun</li>
+								       </ul>
+								         <span data-valor='25'>
+								           <span data-valor='8'>
+								             <span data-valor='13'>
+								               <span data-valor='5'>   
+								                 <span data-valor='23'>   
+								                 <span data-valor='12'>
+								                     <span data-valor='15'>
+								                     </span></span></span></span></span></span></span>
+								       </div>
+       
+    								 </div>
+				                    <ul class="time-lenght horizontal-list">
+				                        <li><a class="time-lenght-btn" href="#14">Week</a></li>
+				                        <li><a class="time-lenght-btn" href="#15">Month</a></li>
+				                        <li><a class="time-lenght-btn" href="#16">Year</a></li>
+				                    </ul>
+				                    <ul class="month-data clear">
+				                        <li>
+				                            <p>APR<span class="scnd-font-color"> 2020</span></p>
+				                            <p><span class="entypo-plus increment"> </span>21<sup>%</sup></p>
+				                        </li>
+				                        <li>
+				                            <p>MAY<span class="scnd-font-color"> 2020</span></p>
+				                            <p><span class="entypo-plus increment"> </span>48<sup>%</sup></p>
+				                        </li>
+				                        <li>
+				                            <p>JUN<span class="scnd-font-color"> 2020</span></p>
+				                            <p><span class="entypo-plus increment"> </span>35<sup>%</sup></p>
+				                        </li>
+				                    </ul>
+				                </div>
+                
+
+  
+						  <div class="bar-chart-block block">
+						    <h2 class='titular'>Top Stors</span></h2>
+						    <div class='grafico bar-chart'>
+						       <ul class='eje-y'>
+						         <li data-ejeY='60'></li>
+						         <li data-ejeY='45'></li>
+						         <li data-ejeY='30'></li>
+						         <li data-ejeY='15'></li>
+						         <li data-ejeY='0'></li>
+						       </ul>
+						       <ul class='eje-x'>
+						         {% for i in range(7) %}
+						         <li data-ejeX="{{ data[i]['nb_prod'] }}"><i>{{ data[i]['Store'] }}</i></li>
+						         {% endfor %}
+						         
+						       </ul>
+						    </div>
+						  </div>
+          			  </div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

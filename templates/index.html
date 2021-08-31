@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopBot</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<style type="text/css">
+	.card{
+		float: left;
+		margin-left: 10px;	
+		margin-bottom: 10px;
+	}
+</style>
+</head>
+<body>
+	<nav>
+	    <input type="checkbox" id="check">
+	    <label for="check" class="checkbtn">
+	        <i class="fas fa-bars"></i>
+	    </label>
+	    <label class="logo">ShopBot</label>
+	       	<ul>
+	            <li><a href="/category/26" class="active">PC Portable</a></li>
+	            <li><a href="/category/31">Ordinateur</a></li>
+	            <li><a href="/category/32">Tablette</a></li>
+	            <li><a href="/category/33">Stockage</a></li>
+	            <li><a href="/category/34">Accessoires</a></li>
+	        </ul>
+	</nav>
+<section style="padding:16px">
+	<div class="container">
+		<div clas="row">
+			<div clas="col-md-12 ">
+				{% for d in data %}
+					<div class="card" style="width: 16rem;">
+					  <img class="card-img-top" src="{{ d[4] }}" alt="Card image cap">
+					  <div class="card-body">
+					    <h5 class="card-title">
+					    	<a href="/single/{{d[0]}}">	
+					    		{{ d[1][:30]}}
+					    	</a>
+					    </h5>
+					    <p class="card-text">{{ d[2][:20] }}...</p>
+					    <a href="#" class="btn btn-primary">{{ d[3] }}</a>
+					  </div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>	
+</section>
+

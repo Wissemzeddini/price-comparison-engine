@@ -1,0 +1,9 @@
+pip install matplotlib
+pip install pandas 
+pip install numpy
+pip install beautifullSoup
+pip install skiti-learn
+pip install request
+pip install fuzzywuzzy
+pip install flask
+pip install pickle

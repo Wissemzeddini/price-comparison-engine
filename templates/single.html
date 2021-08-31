@@ -1,0 +1,77 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>single</title>
+		<title>ShopBot</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+		<style type="text/css">
+			div{
+				display: flex;
+			}
+			body{
+				padding:0px;
+				margin: 0px; 
+				background: white
+			}
+			.space{
+				padding: 20px;
+				margin-left: 110px;
+				font-size: 25px;
+				font-weight: 800px;
+				color: #007bff;
+			}
+		</style>
+	</head>
+	<body>
+	<nav>
+	    <input type="checkbox" id="check">
+	    <label for="check" class="checkbtn">
+	        <i class="fas fa-bars"></i>
+	    </label>
+	    <label class="logo">ShopBot</label>
+	       	<ul>
+	            <li><a href="/category/26" class="active">PC Portable</a></li>
+	            <li><a href="/category/31">Ordinateur</a></li>
+	            <li><a href="/category/32">Tablette</a></li>
+	            <li><a href="/category/33">Stockage</a></li>
+	            <li><a href="/category/34">Accessoires</a></li>
+	        </ul>
+	</nav>
+	<div class="container" style=" padding:16px;">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="{{ res[13] }}" class="img">
+			</div>
+			<div class="col-md-6" style="display: list-item!important; background:#eee">
+				<h3 >{{res[1]}}</h3><br>
+				<h4>{{ res[3] }} &nbsp;&nbsp;<span style="color:blue;font-weight:600">{{brand}}</span></h4><br>
+				<h3>{{ res[5] }}&nbsp;TND</h3><br>
+				<img src="{{logo}}" width="80" height="40"><br><br>
+				<h5> {{ res[4] }}</h5><br>
+				<h4 style="font-weight:600;color:green">{{ res[6]}}</h4>
+			</div>
+		</div>
+	</div>
+	<div class="space">Liste de produits similaire</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					{% for l in list %}
+					<tr>
+						<td style="background:#eee"><img src="{{l['sup_img']}}" width="70" height="30"></td>
+						<td><a href="#">{{l['name']}}</a></td>
+						<td>{{l['price']}}</td>
+						<td><img src="{{l['img']}}" width="90" height="70"></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+
+	</body>
+	</html>
